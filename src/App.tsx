@@ -39,10 +39,10 @@ export default function App() {
   const startRecording = async () => {
     setError(null);
     setRecordingTime(0);
-    setIsRecording(true);
+    
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorderRef.current = new MediaRecorder(stream);
+      mediaRecorderRef.current = new MediaRecorder(stream, { mimeType: "audio/mp4" });
       audioChunksRef.current = [];
 
       mediaRecorderRef.current.ondataavailable = (event) => {
@@ -53,7 +53,7 @@ export default function App() {
 
       mediaRecorderRef.current.onstop = () => {
         if (timerRef.current) clearInterval(timerRef.current);
-        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
+        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/mp4" });
         const url = URL.createObjectURL(audioBlob);
         setAudioUrl(url);
         setIsRecording(false);
@@ -68,6 +68,8 @@ export default function App() {
       };
 
       mediaRecorderRef.current.start();
+      setIsRecording(true); // <- aquí, no antes
+
       timerRef.current = window.setInterval(() => {
         setRecordingTime((prev) => {
           if (prev + 1 >= MAX_DURATION) {
