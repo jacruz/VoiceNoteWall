@@ -61,7 +61,7 @@ export default function App() {
         // Simular llamada a API Speech-to-Text
         setIsLoadingText(true);
         setTimeout(() => {
-          setPreviewText("Este es el texto transcrito desde el audio.");
+          setPreviewText("Este sería el texto transcrito desde el audio (cuando esté completo).");
           setIsLoadingText(false);
           setIsPreview(true);
         }, 2000);
@@ -167,7 +167,7 @@ export default function App() {
       {!isRecording && !isPreview && !isLoadingText && (
         <button
           onClick={startRecording}
-          className="fixed bottom-6 right-6 w-20 h-20 rounded-full bg-red-600 border-4 border-black flex items-center justify-center text-white text-xl font-bold shadow-lg hover:bg-red-700 z-20"
+          className="fixed select-none bottom-6 right-6 w-20 h-20 rounded-full bg-red-600 border-4 border-black flex items-center justify-center text-white text-xl font-bold shadow-lg hover:bg-red-700 z-20"
         >
           REC
         </button>
@@ -188,7 +188,7 @@ export default function App() {
           </p>
           <button
             onClick={stopRecording}
-            className="mt-8 px-6 py-3 bg-white border-4 border-black rounded-lg shadow-lg font-bold hover:bg-gray-200"
+            className="select-none mt-8 px-6 py-3 bg-white border-4 border-black rounded-lg shadow-lg font-bold hover:bg-gray-200"
           >
             Detener
           </button>
@@ -233,7 +233,7 @@ export default function App() {
           <div className="flex gap-4">
             <button
               onClick={handleAccept}
-              className="px-6 py-3 bg-green-400 border-4 border-black rounded-lg shadow-lg font-bold hover:bg-green-500"
+              className="select-none px-6 py-3 bg-green-400 border-4 border-black rounded-lg shadow-lg font-bold hover:bg-green-500"
             >
               Aceptar
             </button>
@@ -243,7 +243,7 @@ export default function App() {
                 setAudioUrl(null);
                 setPreviewText("");
               }}
-              className="px-6 py-3 bg-red-400 border-4 border-black rounded-lg shadow-lg font-bold hover:bg-red-500"
+              className="select-none px-6 py-3 bg-red-400 border-4 border-black rounded-lg shadow-lg font-bold hover:bg-red-500"
             >
               Cancelar
             </button>
