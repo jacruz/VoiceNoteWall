@@ -91,7 +91,7 @@ export default function App() {
 
   const handleAccept = async () => {
     setError(null);
-    const success = Math.random() > 0.2; // Simulación de respuesta del servicio
+    const success = true;//Math.random() > 0.2; // Simulación de respuesta del servicio
     if (!success) {
       setError("No se pudo cargar el audio, inténtalo más tarde.");
       return;
